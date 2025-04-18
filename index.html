@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能投资平台 - Altafs风格演示</title>
+  <style>
+    /* 基础样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* 主容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #fff;
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    
+    /* 头部样式 */
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px 0;
+    }
+    
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .main-menu {
+      display: flex;
+    }
+    
+    .main-menu a {
+      color: white;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .main-menu a:hover {
+      color: #007bff;
+    }
+    
+    /* 英雄区域 */
+    .hero {
+      background: linear-gradient(45deg, #2e2e2e, #1a1a1a);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .hero-title {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .cta-button:hover {
+      background-color: #0069d9;
+    }
+    
+    /* 特点区域 */
+    .features {
+      padding: 80px 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: #007bff;
+      margin: 20px auto 0;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-icon {
+      font-size: 40px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    
+    .feature-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    
+    .feature-desc {
+      color: #666;
+    }
+    
+    /* 投资产品区 */
+    .products {
+      padding: 80px 20px;
+      background-color: #f9f9f9;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .product-image {
+      height: 200px;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #999;
+    }
+    
+    .product-content {
+      padding: 20px;
+    }
+    
+    .product-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .product-stats {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    
+    .stat {
+      flex: 1;
+    }
+    
+    .stat-value {
+      font-size: 22px;
+      font-weight: bold;
+      color: #007bff;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .product-button {
+      display: block;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .product-button:hover {
+      background-color: #0069d9;
+    }
+    
+    /* 底部区域 */
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 50px 20px 20px;
+    }
+    
+    .footer-content {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: #007bff;
+      margin-top: 10px;
+    }
+    
+    .footer-links a {
+      display: block;
+      margin-bottom: 10px;
+      color: #aaa;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 32px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">智能投资</div>
+      <nav class="main-menu">
+        <a href="#">首页</a>
+        <a href="#">投资</a>
+        <a href="#">团队</a>
+        <a href="#">我的</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">智能投资平台</h1>
+        <p class="hero-subtitle">高效、安全、智能的投资方式，轻松实现财富增长</p>
+        <a href="#" class="cta-button">立即投资</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2 class="section-title">我们的优势</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3 class="feature-title">高收益</h3>
+          <p class="feature-desc">通过智能算法分析市场，提供超越传统投资的收益率。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">安全保障</h3>
+          <p class="feature-desc">多重风控系统，确保您的资金安全，投资无忧。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">快速回报</h3>
+          <p class="feature-desc">投资周期灵活，最快当日即可获得收益，资金灵活调配。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <h2 class="section-title">热门投资产品</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">产品图片1</div>
+          <div class="product-content">
+            <h3 class="product-title">稳健理财计划</h3>
+            <div class="product-stats">
+              <div class="stat">
+                <div class="stat-value">8%</div>
+                <div class="stat-label">年化收益</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">3个月</div>
+                <div class="stat-label">投资期限</div>
+              </div>
+            </div>
+            <a href="#" class="product-button">立即投资</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">产品图片2</div>
+          <div class="product-content">
+            <h3 class="product-title">增长精选计划</h3>
+            <div class="product-stats">
+              <div class="stat">
+                <div class="stat-value">12%</div>
+                <div class="stat-label">年化收益</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">6个月</div>
+                <div class="stat-label">投资期限</div>
+              </div>
+            </div>
+            <a href="#" class="product-button">立即投资</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">产品图片3</div>
+          <div class="product-content">
+            <h3 class="product-title">财富尊享计划</h3>
+            <div class="product-stats">
+              <div class="stat">
+                <div class="stat-value">15%</div>
+                <div class="stat-label">年化收益</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">12个月</div>
+                <div class="stat-label">投资期限</div>
+              </div>
+            </div>
+            <a href="#" class="product-button">立即投资</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>关于我们</h3>
+        <div class="footer-links">
+          <a href="#">公司简介</a>
+          <a href="#">团队介绍</a>
+          <a href="#">发展历程</a>
+          <a href="#">联系我们</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>产品服务</h3>
+        <div class="footer-links">
+          <a href="#">投资产品</a>
+          <a href="#">财富管理</a>
+          <a href="#">风险控制</a>
+          <a href="#">投资策略</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>帮助中心</h3>
+        <div class="footer-links">
+          <a href="#">新手指南</a>
+          <a href="#">常见问题</a>
+          <a href="#">安全保障</a>
+          <a href="#">费率说明</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>联系方式</h3>
+        <div class="footer-links">
+          <a href="#">客服热线：400-888-8888</a>
+          <a href="#">邮箱：support@example.com</a>
+          <a href="#">地址：北京市朝阳区XX大厦</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 智能投资平台 版权所有
+    </div>
+  </footer>
+</body>
+</html>
